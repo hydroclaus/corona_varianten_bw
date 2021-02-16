@@ -23,29 +23,45 @@ def plot_pflege_schule_kitas(data, flag=""):
     fig, ax = plt.subplots(nrows=4, ncols=1, sharex=True, figsize=(8,12))
     color_faelle = 'darkgray'
 
-
-    # Varianten
-    ax[0].plot(data["Timestamp"],
-               data["Faelle_Varianten_Typ"],
-               "o-",
-               label=flag+"Faelle_Varianten_Typ",
-               )
-    ax[0].plot(data["Timestamp"],
-               data["B117"],
-               "o-",
-               label=flag+"B117",
-               )
-    ax[0].plot(data["Timestamp"],
-               data["B1351"],
-               "o-",
-               label=flag+"B1351"
-               )
-    ax[0].legend(bbox_to_anchor=(1,1), loc="upper left")
+    # ------------------------------------------------------------
+    #                                                    Varianten
+    # ------------------------------------------------------------
+    n_varianten = ax[0].plot(data["Timestamp"],
+                             data["Faelle_Varianten_Typ"],
+                             "o-",
+                             label=flag+"Faelle_Varianten_Typ",
+                             )
+    n_b117 = ax[0].plot(data["Timestamp"],
+                        data["B117"],
+                        "o-",
+                        label=flag+"B117",
+                        )
+    n_b1351 = ax[0].plot(data["Timestamp"],
+                         data["B1351"],
+                         "o-",
+                         label=flag+"B1351"
+                         )
+    lns = n_varianten + n_b117 + n_b1351
+    if flag == "Δ":
+        ax0 = ax[0].twinx()
+        perc_varianten = data["Faelle_Varianten_Typ"] / data["n_ges"] * 100.0
+        perc_var = ax0.plot(data["Timestamp"],
+                            perc_varianten,
+                            "o--",
+                            c=color_faelle)
+        ax0.set_ylim(-20., 40.)
+        ax0.set_ylabel("Percent Varianten")
+        lns = n_varianten + n_b117 + n_b1351 + perc_var
+        
+    
+    labs = [l.get_label() for l in lns]
+    ax[0].legend(lns, labs, bbox_to_anchor=(1.1,1), loc="upper left")
     ax[0].grid(True)
     ax[0].title.set_text(flag+"Varianten")
 
-
-    # Pflegeheime
+    # ------------------------------------------------------------
+    #                                                  Pflegeheime
+    # ------------------------------------------------------------
     n_pflegeheime = ax[1].plot(data["Timestamp"],
                                data["n_Ausbrueche_Pflegeheimen"],
                                "o-",
