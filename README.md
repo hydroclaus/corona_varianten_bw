@@ -12,5 +12,5 @@ https://www.gesundheitsamt-bw.de/lga/DE/Fachinformationen/Infodienste_Newsletter
 - [main jupyter notebook file](./new_variants_bw.ipynb) with plots of schools and kitas at the bottom
 - [python helpfer file](./corona_variants_bw_helper.py)
 - main data file
-    - for overview and data entry: apple numbers workbook (data_corona_varianten.numbers)[./data/data_corona_varianten.numbers], that is exported as a tab separated file (data_corona_varianten.tsv)[./data/data_corona_varianten.tsv]
+    - for overview and data entry: apple numbers workbook [data_corona_varianten.numbers](./data/data_corona_varianten.numbers), that is exported as a tab separated file [data_corona_varianten.tsv](./data/data_corona_varianten.tsv)
     - 
