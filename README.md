@@ -1,15 +1,16 @@
 # Corona Varianten in Baden-Württemberg
 Analyse / Visualisierung der Corona-Varianten in Baden-Württemberg
 
-[Source of the PDFs](https://www.baden-wuerttemberg.de/fileadmin/redaktion/dateien/PDF/Coronainfos/210207_COVID_Tagesbericht_LGA.pdf) that reside currently in [pdfs](./pdfs):
-
 Currently parsed manually.
 
+overview where the PDFs with the data reside: https://www.gesundheitsamt-bw.de/lga/DE/Fachinformationen/Infodienste_Newsletter/InfektNews/Seiten/Lagebericht_covid-19.aspx
 
-
-https://www.baden-wuerttemberg.de/fileadmin/redaktion/dateien/PDF/Coronainfos/210211_COVID_Tagesbericht_LGA.pdf
-
-## 20210212
-overview: https://www.gesundheitsamt-bw.de/lga/DE/Fachinformationen/Infodienste_Newsletter/InfektNews/Seiten/Lagebericht_covid-19.aspx
-
+e.g.,
 https://www.gesundheitsamt-bw.de/lga/DE/Fachinformationen/Infodienste_Newsletter/InfektNews/Lagebericht%20COVID19/COVID_Lagebericht_LGA_210211.pdf
+
+
+- [main jupyter notebook file](./new_variants_bw.ipynb) with plots of schools and kitas at the bottom
+- [python helpfer file](./corona_variants_bw_helper.py)
+- main data file
+    - for overview and data entry: apple numbers workbook (data_corona_varianten.numbers)[./data/data_corona_varianten.numbers], that is exported as a tab separated file (data_corona_varianten.tsv)[./data/data_corona_varianten.tsv]
+    - 
