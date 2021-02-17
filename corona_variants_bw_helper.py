@@ -85,8 +85,9 @@ def plot_pflege_schule_kitas(data, flag=""):
     ax[1].title.set_text(flag+"Pflegeheime")
     ax[1].set_ylabel(flag+"Faelle")
 
-
-    # Schulen
+    # ------------------------------------------------------------
+    #                                                      Schulen
+    # ------------------------------------------------------------
     n_schule = ax[2].plot(data["Timestamp"],
                           data["n_Ausbrueche_Schulen"],
                           "o-",
@@ -107,7 +108,7 @@ def plot_pflege_schule_kitas(data, flag=""):
                                  label="Herbstferien",
                                  color="crimson",
                                  alpha=0.3)
-    ax[2].annotate('Herbsferien', 
+    ax[2].annotate('Faschingsferien', 
                   (date2num(datetime.datetime(2021,2,13)), data["n_Ausbrueche_Schulen"].min()),
                   xycoords='data',
                   color='red',
@@ -123,8 +124,9 @@ def plot_pflege_schule_kitas(data, flag=""):
     ax[2].title.set_text(flag+"Schulen")
 
 
-
-    # Kitas
+    # ------------------------------------------------------------
+    #                                                        Kitas
+    # ------------------------------------------------------------
     n_kitas = ax[3].plot(data["Timestamp"],
                          data["n_Ausbrueche_Kitas"],
                          "o-",
