@@ -41,7 +41,14 @@ def plot_pflege_schule_kitas(data, flag=""):
                          "o-",
                          label=flag+"B1351"
                          )
-    lns = n_varianten + n_b117 + n_b1351
+    n_b11281 = ax[0].plot(data["Timestamp"],
+                          data["B11281"],
+                          "o-",
+                          label=flag+"B1351"
+                          )
+
+    lns = n_varianten + n_b117 + n_b1351 + n_b11281
+    
     if flag == "Δ":
         ax0 = ax[0].twinx()
         perc_varianten = data["Faelle_Varianten_Typ"] / data["n_ges"] * 100.0
