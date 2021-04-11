@@ -11,7 +11,8 @@ import matplotlib.pyplot as plt
 import datetime
 from matplotlib.dates import date2num
 import pathlib
-cwd = pathlib.Path.cwd()
+import pandas as pd
+
 
 __author__ = "Claus Haslauer (mail@planetwater.org)"
 __version__ = "$Revision: 0.1 $"
@@ -19,6 +20,9 @@ __date__ = datetime.date(2021,2,16)
 __copyright__ = "Copyright (c) 2021 Claus Haslauer"
 __license__ = "Python"
 
+cwd = pathlib.Path.cwd()
+ferien = pd.read_csv(r'./data/holidays.csv',
+                     parse_dates=True)
 
 
 def plot_pflege_schule_kitas(data, flag="", out_path='out'):
@@ -115,18 +119,26 @@ def plot_pflege_schule_kitas(data, flag="", out_path='out'):
     ax2.set_ylabel(flag+"n Varianten in Schulen")
     ax[2].set_ylabel(flag+"Faelle")
 
-    herbstferien = ax[2].axvspan(date2num(datetime.datetime(2021,2,13)),
-                                 date2num(datetime.datetime(2021,2,21)),
-                                 label="Herbstferien",
-                                 color="crimson",
-                                 alpha=0.3)
-    ax[2].annotate('Faschingsferien', 
-                  (date2num(datetime.datetime(2021,2,13)), data["n_Ausbrueche_Schulen"].min()),
-                  xycoords='data',
-                  color='red',
-                  xytext=(5, 5),
-                  textcoords='offset points'
-                  )
+    for index, row in ferien.iterrows():
+        cur_start = datetime.datetime.strptime(row['start'], "%Y-%m-%d")
+        cur_stop = datetime.datetime.strptime(row['stop'], "%Y-%m-%d")
+        ax[2].axvspan(cur_start,
+                cur_stop,
+                # label='Schulferien', #row['holiday_name'],
+                color="crimson",
+                alpha=0.3)
+    # herbstferien = ax[2].axvspan(date2num(datetime.datetime(2021,2,13)),
+    #                              date2num(datetime.datetime(2021,2,21)),
+    #                              label="Herbstferien",
+    #                              color="crimson",
+    #                              alpha=0.3)
+    # ax[2].annotate('Faschingsferien', 
+    #               (date2num(datetime.datetime(2021,2,13)), data["n_Ausbrueche_Schulen"].min()),
+    #               xycoords='data',
+    #               color='red',
+    #               xytext=(5, 5),
+    #               textcoords='offset points'
+    #               )
 
     lns = n_schule + n_schule_varianten #+ herbstferien
     labs = [l.get_label() for l in lns]
