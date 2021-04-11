@@ -10,6 +10,8 @@ Helper script for corona_varianten_bws
 import matplotlib.pyplot as plt
 import datetime
 from matplotlib.dates import date2num
+import pathlib
+cwd = pathlib.Path.cwd()
 
 __author__ = "Claus Haslauer (mail@planetwater.org)"
 __version__ = "$Revision: 0.1 $"
@@ -19,7 +21,10 @@ __license__ = "Python"
 
 
 
-def plot_pflege_schule_kitas(data, flag=""):
+def plot_pflege_schule_kitas(data, flag="", out_path='out'):
+
+    cwd = pathlib.Path.cwd()
+
     fig, ax = plt.subplots(nrows=4, ncols=1, sharex=True, figsize=(8,12))
     color_faelle = 'darkgray'
 
@@ -44,7 +49,7 @@ def plot_pflege_schule_kitas(data, flag=""):
     n_b11281 = ax[0].plot(data["Timestamp"],
                           data["B11281"],
                           "o-",
-                          label=flag+"B1351"
+                          label=flag+"B11281"
                           )
 
     lns = n_varianten + n_b117 + n_b1351 + n_b11281
@@ -159,6 +164,8 @@ def plot_pflege_schule_kitas(data, flag=""):
 
     fig.autofmt_xdate(rotation=90)
 
+    fname = 'Pflegeheime_Schulen_Kitas' + flag + '.png'
+    plt.savefig(cwd / out_path / fname , dpi=200)
 
 def main():
     pass
