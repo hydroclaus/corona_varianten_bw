@@ -8,6 +8,17 @@ Datenquelle / data source: [Landesgesundheitsamt Baden-Württemberg](https://www
 - associated [python helpfer file](./corona_variants_bw_helper.py)
 - data are downloaded and updated into `./pdfs` via [`download_latest_pdf.ipynbs`](https://github.com/hydroclaus/corona_varianten_bw/blob/main/download_latest_pdf.ipynb) (with inspiration from [this gist](https://gist.github.com/elssar/5160757))
 - main data file: for overview and data entry: apple numbers workbook [data_corona_varianten.numbers](./data/data_corona_varianten.numbers), that is exported as a tab separated file [data_corona_varianten.tsv](./data/data_corona_varianten.tsv)
+- secondary data: population distribution over ages: [Altersstruktur_BW.csv](https://github.com/hydroclaus/corona_varianten_bw/blob/main/data/Altersstruktur_BW.csv)
+
+
+## Typical Workflow
+
+1. Update data using [`download_latest_pdf.ipynbs`](https://github.com/hydroclaus/corona_varianten_bw/blob/main/download_latest_pdf.ipynb)
+2. Update numbers file [data_corona_varianten.numbers](./data/data_corona_varianten.numbers) and export to [tab separated file](https://github.com/hydroclaus/corona_varianten_bw/blob/main/data/data_corona_varianten.tsv) that is read in the following
+3. run the [main jupyter notebook](./new_variants_bw.ipynb) 
+4. Output (figures) are stored in `./out/`(https://github.com/hydroclaus/corona_varianten_bw/tree/main/out)
+
+
 
 Notes
 
